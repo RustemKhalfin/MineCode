@@ -3,61 +3,71 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Solution {
-
-
-    public static void main(String args[]) throws IOException {
+public class Solution 
+{
+    public static void main(String args[]) throws IOException 
+    {
         System.out.println("Введите длину 1й стороны треуголника (радиус круга)"); 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<Integer> list = new ArrayList<>();
         int i;
         double s = 0;
 
-        while (true) {
-            String str = reader.readLine();
-            if (str.equals("")) {
-                break;
-            }
-            int r = Integer.parseInt(str);
-            list.add(r);
-        }
-        if (list.size() == 1) {
+        while (true) 
+                {
+                String str = reader.readLine();
+                if (str.equals("")) {break;}
+                int r = Integer.parseInt(str);
+                list.add(r);
+                }
+        if (list.size() == 1) 
+        {
             int r = list.get(0);
             s = circle(r);
             System.out.println("Площадь круга= " + s + " кв.ед."); //Если пользователь ввел только одно значение, то необходимо вычислить площадь круга
-        } else if (list.size() == 3) {
+        } 
+        else if (list.size() == 3) 
+        {
             int a = list.get(0);
             int b = list.get(1);
             int c = list.get(2);
             s = triangle(a, b, c);
-            if (s == 0) {
+            if (s == 0) 
+            {
                System.out.println("Такого треугольника не существует");
-            } else {
+            } 
+            else 
+            {
                 System.out.println("Площадь треугольника= " + s + " кв.ед.");
             }
-        } else {
+        } 
+        else 
+            {
             System.out.println("Эта фигура не является ни кругом, ни треугольником");
-        }
+            }
     }
 
 
 
-    static double circle (int a){
+    static double circle (int a)
+    {
        double s;
        s = 3.14*a*a;
        return s;
     }
-    static double triangle (int a, int b, int c){
+    static double triangle (int a, int b, int c)
+    {
         double p, s;
-        if ((a+b)>c && (b+c)>a && (a+c)>b){
+        if ((a+b)>c && (b+c)>a && (a+c)>b)
+            {
             p=(a+b+c)/2;
             s=Math.sqrt(p*(p-a)*(p-b)*(p-c));
             return s;
-        }
-        else {
+            }
+        else 
+            {
             return 0;
-        }
-       
+            }
     }
 
 }
